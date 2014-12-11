@@ -1,4 +1,21 @@
 miniBusEmergencyRouteSimulator
 ==============================
 
-Web Application to simulate Mini-Buses moving around the campus and to display the shortest route from a mini-bus to a location in case of emergency.
+# Problem Statement 
+Use the road network digital data of IIT Bombay campus and show the movement of our internal minibus service by simulating the positions. Given an emergency location, you can send the nearest vehicle for help.
+
+# Technologies Used:
+* GeoServer
+* OpenLayers
+* GeoExt
+
+# Programmed in :
+* HTML5
+* CSS
+* JavaScript
+* PHP
+
+# References:
+* PgRouting Workshop Manual for implementation of Shortest Route
+  http://workshop.pgrouting.org/
+
