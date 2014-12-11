@@ -1,0 +1,397 @@
+<html>
+
+<head>
+
+    <title>GIS Project | CSRE, IIT Bombay</title>
+    <script src="js/ext-base.js" type="text/javascript"></script>
+    <script src="js/ext-all.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="css/ext-all.css" />
+    <script src="js/OpenLayers.js" type="text/javascript"></script>
+    <script src="js/GeoExt.js" type="text/javascript"></script>
+    <script src="js/DrawPoints.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="css/geoext-all-debug.css" />
+
+
+
+
+    <script type="text/javascript">
+
+        // global projection objects (uses the proj4js lib)
+        var epsg_4326 = new OpenLayers.Projection("EPSG:4326");
+        var route1 = [
+            [72.90533, 19.13524],
+            [72.90567, 19.13554],
+            [72.90636, 19.13541],
+            [72.90730, 19.13524],
+            [72.90811, 19.13502],
+            [72.90906, 19.13464],
+            [72.90957, 19.13425],
+            [72.91048, 19.13412],
+            [72.91048, 19.13318],
+            [72.91108, 19.13275],
+            [72.91108, 19.13275],
+            [72.91151, 19.13232],
+            [72.91151, 19.13232],
+            [72.91219, 19.13181],
+            [72.91219, 19.13129],
+            [72.91266, 19.13133],
+            [72.91352, 19.13099],
+            [72.91387, 19.12996],
+            [72.91378, 19.12872],
+            [72.91421, 19.12863],
+            [72.91408, 19.12739],
+            [72.91387, 19.12626],
+            [72.91341, 19.12533],
+            [72.91438, 19.12528],
+            [72.91507, 19.12550],
+            [72.91558, 19.12575],
+            [72.91532, 19.12640],
+            [72.91593, 19.12640],
+            [72.91537, 19.12846],
+            [72.91541, 19.12957],
+            [72.91528, 19.13086],
+            [72.91511, 19.13219],
+            [72.91417, 19.13296],
+            [72.91369, 19.13296],
+            [72.91266, 19.13339],
+            [72.91129, 19.13387],
+            [72.90957, 19.13425],
+            [72.90906, 19.13464],
+            [72.90811, 19.13502],
+            [72.90730, 19.13524],
+            [72.90636, 19.13541],
+            [72.90567, 19.13554],
+            [72.90533, 19.13524]
+        ];
+
+        var route2 = [
+            [72.919235, 19.128320],
+            [72.919064, 19.128564],
+            [72.919042, 19.128807],
+            [72.919053, 19.129091],
+            [72.919031, 19.129385],
+            [72.919021, 19.129679],
+            [72.918978, 19.130074],
+            [72.918946, 19.130358],
+            [72.918956, 19.130307],
+            [72.918924, 19.130743],
+            [72.918924, 19.131078],
+            [72.918870, 19.131565],
+            [72.918785, 19.131807],
+            [72.918516, 19.131949],
+            [72.918270, 19.131899],
+            [72.918055, 19.131939],
+            [72.917958, 19.132324],
+            [72.917969, 19.132426],
+            [72.917894, 19.132801],
+            [72.917948, 19.133064],
+            [72.918270, 19.133297],
+            [72.918302, 19.133591],
+            [72.918327, 19.134137],
+            [72.918173, 19.134453],
+            [72.918077, 19.134706],
+            [72.918012, 19.135223],
+            [72.918034, 19.135578],
+            [72.918034, 19.135892],
+            [72.918055, 19.136419],
+            [72.918001, 19.136784],
+            [72.917894, 19.137048],
+            [72.917551, 19.137301],
+            [72.917165, 19.137707],
+            [72.916725, 19.138041],
+            [72.916242, 19.138234],
+            [72.915941, 19.138284],
+            [72.915555, 19.138284],
+            [72.915341, 19.137980],
+            [72.915158, 19.137717],
+            [72.914976, 19.137453],
+            [72.914965, 19.136916],
+            [72.914847, 19.136460],
+            [72.914665, 19.135912],
+            [72.914536, 19.135446],
+            [72.914364, 19.134879],
+            [72.914225, 19.134554],
+            [72.914160, 19.134250],
+            [72.914579, 19.134301],
+            [72.914976, 19.134331],
+            [72.915384, 19.134352],
+            [72.915888, 19.134362],
+            [72.916499, 19.134412],
+            [72.916896, 19.134473],
+            [72.917336, 19.134463],
+            [72.917701, 19.134402],
+            [72.918087, 19.134372],
+            [72.918270, 19.134392],
+            [72.918323, 19.133835],
+            [72.918313, 19.133510],
+            [72.918237, 19.133206],
+            [72.917873, 19.133145],
+            [72.917851, 19.132831],
+            [72.917937, 19.132446],
+            [72.917980, 19.132051],
+            [72.918302, 19.131949],
+            [72.918667, 19.131929],
+            [72.918881, 19.131726],
+            [72.918892, 19.131209],
+            [72.918924, 19.130672],
+            [72.918967, 19.130094],
+            [72.919031, 19.129598],
+            [72.919010, 19.129121],
+            [72.919064, 19.128584],
+            [72.918203, 19.128543]
+        ];
+
+        var int1, int2, index1 = 0,
+            index2 = 0,
+            panel, bounds, map, mp, blayer, markers, markers1, markers2, size, offset, px1, py1, px2, py2, icon1, icon2, nx1, ny1, nx2, ny2, route_layer, points_layer, draw_points, drag_points, store, audio;
+
+        function pgrouting(store, layer, method) {
+            //console.log("pg");
+            if (layer.features.length == 1) {
+                // erase the previous route
+                store.removeAll();
+                clearInterval(int1);
+                clearInterval(int2);
+                var startpoint = layer.features[0].geometry.clone();
+
+                // load to route
+                store.load({
+                    params: {
+                        startpointx: startpoint.x,
+                        startpointy: startpoint.y,
+                        b1x: route1[index1][0],
+                        b1y: route1[index1][1],
+                        b2x: route2[index2][0],
+                        b2y: route2[index2][1]
+                    }
+                });
+            }
+        }
+	function stopAlarm() {
+		audio.pause();
+		audio.currentTime = 0;	
+	}
+        function clearCalled() {
+            if (points_layer.features.length == 1) {
+		stopAlarm();
+                points_layer.removeAllFeatures();
+                route_layer.removeAllFeatures();
+	
+
+                draw_points = new DrawPoints(points_layer);
+                map.addControls([draw_points, drag_points]);
+                int1 = setInterval(function() {
+                    markers1.destroy();
+                    markers1 = new OpenLayers.Layer.Markers("Markers1");
+                    map.addLayer(markers1);
+                    nx1 = route1[index1][0];
+                    ny1 = route1[index1][1];
+                    markers1.addMarker(new OpenLayers.Marker(new OpenLayers.LonLat(nx1, ny1), icon1));
+                    index1++;
+                    if (index1 == (route1.length - 1))
+                        index1 = 0;
+                }, 1000);
+
+                int2 = setInterval(function() {
+
+                    markers2.destroy();
+                    markers2 = new OpenLayers.Layer.Markers("Markers2");
+                    map.addLayer(markers2);
+                    nx2 = route2[index2][0];
+                    ny2 = route2[index2][1];
+                    markers2.addMarker(new OpenLayers.Marker(new OpenLayers.LonLat(nx2, ny2), icon2));
+                    index2++;
+                    if (index2 == (route2.length - 1))
+                        index2 = 0;
+                }, 1000);
+
+            }
+        }
+
+        Ext.onReady(function() {
+            panel = new GeoExt.MapPanel({
+                renderTo: "gxmap",
+                map: {
+                    layers: [new OpenLayers.Layer.WMS("IIT Bombay", "http://localhost:8080/geoserver/cite/wms", {
+                        LAYERS: "cite:ways,cite:ways_vertices_pgr",
+                        format: "image/png"
+                    }, {
+                        isBaseLayer: false,
+                        projection: 'EPSG:4326'
+                    })],
+
+                },
+                zoom: 1,
+                height: 670,
+                width: 700,
+                title: "Nearest Tumtum Facilitator WebApp: CSRE, IIT Bombay"
+            });
+
+            bounds = new OpenLayers.Bounds(
+                72.9052, 19.1377,
+                72.9201, 19.1247
+            );
+            map = panel.map;
+            map.zoomToExtent(bounds);
+            mp = new OpenLayers.Control.MousePosition();
+            map.addControl(mp);
+
+
+            blayer = new OpenLayers.Layer.Vector("Polygon", {
+                strategies: [new OpenLayers.Strategy.Fixed()],
+                protocol: new OpenLayers.Protocol.HTTP({
+                    url: "map.osm",
+                    format: new OpenLayers.Format.OSM()
+                }),
+                projection: new OpenLayers.Projection("EPSG:4326")
+            });
+
+            map.addLayers([blayer]);
+
+	    //tumtum 1
+            markers1 = new OpenLayers.Layer.Markers("Markers1");
+            map.addLayer(markers1);
+
+            size = new OpenLayers.Size(21, 25);
+            offset = new OpenLayers.Pixel(-(size.w / 2), -size.h);
+            icon1 = new OpenLayers.Icon('resources/tumtum1.png', size, offset);
+            px1 = route1[0][0];
+            py1 = route1[0][1];
+
+            markers1.addMarker(new OpenLayers.Marker(new OpenLayers.LonLat(px1, py1), icon1));
+            nx1 = 0;
+            ny1 = 0;
+
+            int1 = setInterval(function() {
+                markers1.destroy();
+                markers1 = new OpenLayers.Layer.Markers("Markers1");
+                map.addLayer(markers1);
+                nx1 = route1[index1][0];
+
+                ny1 = route1[index1][1];
+                markers1.addMarker(new OpenLayers.Marker(new OpenLayers.LonLat(nx1, ny1), icon1));
+                index1++;
+                if (index1 == (route1.length - 1))
+                    index1 = 0;
+            }, 1000);
+            //tumtum 1 ends
+
+	    //tumtum 2
+            markers2 = new OpenLayers.Layer.Markers("Markers2");
+            map.addLayer(markers2);
+
+            icon2 = new OpenLayers.Icon('resources/tumtum2.png', size, offset);
+            px2 = route2[0][0];
+            py2 = route2[0][1];
+            markers2.addMarker(new OpenLayers.Marker(new OpenLayers.LonLat(px2, py2), icon2));
+            nx2 = 0;
+            ny2 = 0;
+
+            int2 = setInterval(function() {
+
+                markers2.destroy();
+                markers2 = new OpenLayers.Layer.Markers("Markers2");
+                map.addLayer(markers2);
+                nx2 = route2[index2][0];
+                ny2 = route2[index2][1];
+                markers2.addMarker(new OpenLayers.Marker(new OpenLayers.LonLat(nx2, ny2), icon2));
+                index2++;
+                if (index2 == (route2.length - 1))
+                    index2 = 0;
+            }, 1000);
+            //tumtum 2 ends
+
+            // creates the layer where the route will be drawn
+            route_layer = new OpenLayers.Layer.Vector("route", {
+                styleMap: new OpenLayers.StyleMap(new OpenLayers.Style({
+                    strokeColor: "#ff0000",
+                    strokeOpacity: 1,
+                    strokeWidth: 5
+                }))
+            });
+
+
+
+            // creates the layer where the start and final points will be drawn
+            points_layer = new OpenLayers.Layer.Vector("points", {
+                styleMap: new OpenLayers.StyleMap(new OpenLayers.Style({
+                    "fillColor": "${getColor}",
+                    "strokeColor": "${getColor}",
+                    "pointRadius": 10,
+                    "fillOpacity": 0.7
+                }, {
+                    context: {
+                        "getColor": function(feature) {
+                            return (feature.layer.features[0] == feature) ? 'red' : 'red';
+                        }
+                    }
+                }))
+            });
+
+            // when a new point is added to the layer, call the pgrouting function
+            points_layer.events.on({
+                featureadded: function() {
+		    audio = document.getElementById("audio");
+       		    audio.play();
+                    pgrouting(store, points_layer, '');
+                }
+            });
+
+            // adds the layers to the map
+            map.addLayers([points_layer, route_layer]);
+
+            // creates the control to draw the points (see the DrawPoints.js file)
+            draw_points = new DrawPoints(points_layer);
+
+            // creates the control to move the points
+            drag_points = new OpenLayers.Control.DragFeature(points_layer, {
+                autoActivate: true
+            });
+
+            // when a point is moved, call the pgrouting function
+            drag_points.onComplete = function() {
+                pgrouting(store, points_layer, '');
+            };
+
+            // adds the controls to the map
+            map.addControls([draw_points, drag_points]);
+
+            // creates the store to query the web service
+            store = new GeoExt.data.FeatureStore({
+                layer: route_layer,
+                fields: [{
+                    name: "length"
+                }],
+                proxy: new GeoExt.data.ProtocolProxy({
+                    protocol: new OpenLayers.Protocol.HTTP({
+                        url: "http://localhost/gis/route.php",
+                        format: new OpenLayers.Format.GeoJSON()
+                    })
+                })
+            });
+        });
+    </script>
+</head>
+
+<body>
+<audio id="audio" src="resources/alarm.mp3" ></audio>
+    <center>
+        <table>
+            <tr>
+                <td>
+                    <div id="gxmap"></div>
+                    <div id="method"></div>
+                </td>
+                <td>
+                    <input type="button" value="Clear Route" onclick="clearCalled();" />
+                    <br><br>
+ 		<input type="button" value="Stop Alarm" onclick="stopAlarm();" />
+		    <br>
+                </td>
+            </tr>
+        </table>
+
+    </center>
+</body>
+
+</html>
