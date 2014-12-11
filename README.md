@@ -25,6 +25,6 @@ References:
 
 Screenshots
 ------------
-!MiniBus Simulator with Emergency Route Calculator](https://raw.github.com/abhishekvp/miniBusEmergencyRouteSimulator/master/Screenshots/MiniBus Simulator.png)
+[!MiniBus Simulator with Emergency Route Calculator](https://raw.github.com/abhishekvp/miniBusEmergencyRouteSimulator/master/Screenshots/MiniBus%20Simulator.png)
 MiniBus Simulator with Emergency Route Calculator
 
