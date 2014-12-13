@@ -18,13 +18,18 @@ Programmed in :
 * JavaScript
 * PHP
 
+Screenshots
+------------
+![MiniBus Simulator](https://raw.githubusercontent.com/abhishekvp/miniBusEmergencyRouteSimulator/master/Screenshots/BusSimulation.png)
+MiniBus Simulator
+
+![Shortest Route to Emergency Location with Time to Location and Distance](https://raw.githubusercontent.com/abhishekvp/miniBusEmergencyRouteSimulator/master/Screenshots/EmergencyShortestRoute.png)
+Shortest Route to Emergency Location with Time to Location and Distance
+
 References:
 ------------
 * PgRouting Workshop Manual for implementation of Shortest Route
   http://workshop.pgrouting.org/
 
-Screenshots
-------------
-![MiniBus Simulator with Emergency Route Calculator](https://raw.github.com/abhishekvp/miniBusEmergencyRouteSimulator/master/Screenshots/MiniBusSimulator.png)
-MiniBus Simulator with Emergency Route Calculator
+
 
